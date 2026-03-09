@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: server
+  labels:
+    app: server
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: net-scheduler-worker
+  containers:
+  - name: server
+    image: python:3.9
+    command: ["python", "-m", "http.server", "8000"]
+    ports:
+    - containerPort: 8000
