@@ -1,7 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-data = pd.read_csv("results.csv")
+data = pd.read_csv("19_results.csv")
 
 avg = data.groupby("placement")["latency"].mean()
 
@@ -13,4 +13,4 @@ plt.title("Pod Placement vs Latency")
 plt.xticks(rotation=0)   
 plt.tight_layout()       
 
-plt.savefig("latency_plot.png")
+plt.savefig("19_latency_plot.png")
