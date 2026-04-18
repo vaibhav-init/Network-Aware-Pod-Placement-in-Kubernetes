@@ -1,8 +1,8 @@
 FROM python:3.11-slim
 
 WORKDIR /app
-COPY requirements.txt /app/requirements.txt
-RUN pip install --no-cache-dir -r /app/requirements.txt
+COPY G_19_requirements.txt /app/G_19_requirements.txt
+RUN pip install --no-cache-dir -r /app/G_19_requirements.txt
 COPY G_19_main.py /app/G_19_main.py
 
 ENV PYTHONUNBUFFERED=1

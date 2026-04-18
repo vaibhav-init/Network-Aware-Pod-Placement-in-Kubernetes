@@ -39,5 +39,5 @@ for bar in bars_after:
             f"{bar.get_height():.1f}", ha="center", va="bottom", fontsize=8)
 
 plt.tight_layout()
-plt.savefig("19_edge_p95_comparison.png", dpi=150)
-print("Saved 19_edge_p95_comparison.png")
+plt.savefig("G_19_edge_p95_comparison.png", dpi=150)
+print("Saved G_19_edge_p95_comparison.png")

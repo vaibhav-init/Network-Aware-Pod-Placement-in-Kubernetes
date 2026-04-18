@@ -1,4 +1,4 @@
-# Network-Aware Pod Re-Placement in Kubernetes
+# Network-Aware Pod Placement in Kubernetes
 
 Team:
 - Vaibhav Lakhera (MT25049)
@@ -35,7 +35,7 @@ loadgen -> gateway -> auth-service -> db-service
 - `db-service` is the anchor and is not moved.
 - `gateway`, `auth-service`, `user-service`, and `logger-service` are movable.
 
-## How Re-Placement Works
+## How Placement Works
 
 1. Deploy the app with the default Kubernetes scheduler.
 2. Linkerd injects proxies into the app pods and exports metrics to Prometheus.
