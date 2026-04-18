@@ -1,0 +1,79 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: network-rescheduler
+  namespace: network-aware
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: network-rescheduler
+  template:
+    metadata:
+      labels:
+        app: network-rescheduler
+      annotations:
+        linkerd.io/inject: enabled
+    spec:
+      serviceAccountName: network-rescheduler
+      tolerations:
+        - key: node-role.kubernetes.io/control-plane
+          operator: Exists
+          effect: NoSchedule
+        - key: node-role.kubernetes.io/master
+          operator: Exists
+          effect: NoSchedule
+      affinity:
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              preference:
+                matchExpressions:
+                  - key: node-role.kubernetes.io/control-plane
+                    operator: Exists
+      containers:
+        - name: controller
+          image: network-rescheduler:latest
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: NAMESPACE
+              value: network-aware
+            - name: PROMETHEUS_URL
+              value: http://prometheus.linkerd-viz.svc.cluster.local:9090
+            - name: QUERY_WINDOW
+              value: 2m
+            - name: SYNC_INTERVAL_SEC
+              value: "30"
+            - name: MIN_RPS
+              value: "0.5"
+            - name: MIN_BENEFIT
+              value: "10"
+            - name: COOLDOWN_SEC
+              value: "60"
+            - name: DEFAULT_LATENCY_MS
+              value: "50"
+            - name: HEALTH_PORT
+              value: "8081"
+          ports:
+            - containerPort: 8081
+              name: health
+          readinessProbe:
+            httpGet:
+              path: /readyz
+              port: health
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: health
+            initialDelaySeconds: 10
+            periodSeconds: 20
+          resources:
+            requests:
+              cpu: 50m
+              memory: 96Mi
+            limits:
+              cpu: 200m
+              memory: 192Mi
+

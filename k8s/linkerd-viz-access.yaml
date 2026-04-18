@@ -1,0 +1,22 @@
+apiVersion: policy.linkerd.io/v1alpha1
+kind: MeshTLSAuthentication
+metadata:
+  name: network-rescheduler
+  namespace: linkerd-viz
+spec:
+  identities:
+    - network-rescheduler.network-aware.serviceaccount.identity.linkerd.cluster.local
+---
+apiVersion: policy.linkerd.io/v1alpha1
+kind: AuthorizationPolicy
+metadata:
+  name: allow-network-rescheduler
+  namespace: linkerd-viz
+spec:
+  targetRef:
+    kind: Namespace
+    name: linkerd-viz
+  requiredAuthenticationRefs:
+    - group: policy.linkerd.io
+      kind: MeshTLSAuthentication
+      name: network-rescheduler
