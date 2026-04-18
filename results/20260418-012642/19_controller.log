@@ -1,0 +1,10 @@
+2026-04-18T01:30:32.397762377+05:30 2026-04-17 20:00:32,397 [INFO] network-rescheduler: Loaded in-cluster Kubernetes config
+2026-04-18T01:30:32.398155643+05:30 2026-04-17 20:00:32,398 [INFO] network-rescheduler: Health server listening on :8081
+2026-04-18T01:30:32.398333205+05:30 2026-04-17 20:00:32,398 [INFO] network-rescheduler: Network rescheduler started for namespace network-aware
+2026-04-18T01:30:33.446391665+05:30 2026-04-17 20:00:33,446 [INFO] network-rescheduler: Moving auth-service toward db-service on node anshul-hp-pavilion-gaming-laptop-15-dk0xxx (rps=0.930 p95=222.50ms benefit=206.92)
+2026-04-18T01:31:04.237146269+05:30 2026-04-17 20:01:04,236 [INFO] network-rescheduler: Moving gateway toward auth-service on node anshul-hp-pavilion-gaming-laptop-15-dk0xxx (rps=0.855 p95=298.26ms benefit=254.87)
+2026-04-18T01:31:35.214794848+05:30 2026-04-17 20:01:35,214 [INFO] network-rescheduler: Moving user-service toward db-service on node anshul-hp-pavilion-gaming-laptop-15-dk0xxx (rps=0.918 p95=197.77ms benefit=181.59)
+2026-04-18T01:32:06.118160342+05:30 2026-04-17 20:02:06,117 [INFO] network-rescheduler: No rollout needed in this cycle
+2026-04-18T01:32:37.115100922+05:30 2026-04-17 20:02:37,114 [INFO] network-rescheduler: No rollout needed in this cycle
+2026-04-18T01:33:08.134728173+05:30 2026-04-17 20:03:08,134 [INFO] network-rescheduler: No rollout needed in this cycle
+2026-04-18T01:33:38.858085304+05:30 2026-04-17 20:03:38,857 [INFO] network-rescheduler: No rollout needed in this cycle

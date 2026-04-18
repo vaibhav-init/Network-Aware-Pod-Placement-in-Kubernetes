@@ -9,10 +9,6 @@ venv/
 # System files
 .DS_Store
 Thumbs.db
-
-# Kubernetes temp files
-*.log
-
 # IDE
 .vscode/
 .idea/

@@ -20,7 +20,6 @@ apps/
   loadgen/        Traffic generator that keeps calling the gateway
   service/        Generic Python HTTP microservice image reused by all apps
 controller/       Runtime rescheduler controller
-docs/             Short architecture and setup notes
 k8s/              Namespace, RBAC, workloads, and controller manifests
 scripts/          Build, deploy, and teardown helpers
 ```

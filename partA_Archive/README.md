@@ -23,7 +23,7 @@ Files:
 - `19_client-pod.yaml` – client pod
 - `19_results.csv` – latency measurements
 - `19_plot_latency.py` – plotting script
-- `latency_plot.png` – generated latency plot
+- `19_latency_plot.png` – generated latency plot
 - `19_report.pdf` – project report
 
 Commands to Run:
