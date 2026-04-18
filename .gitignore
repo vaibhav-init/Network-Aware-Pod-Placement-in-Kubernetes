@@ -17,6 +17,3 @@ Thumbs.db
 .vscode/
 .idea/
 
-# Generated experiment outputs
-results/*
-!results/.gitkeep

@@ -1,0 +1,168 @@
+LAST SEEN   TYPE      REASON                   OBJECT                                      MESSAGE
+9m12s       Normal    Scheduled                pod/gateway-7f7b464549-5dz8x                Successfully assigned network-aware/gateway-7f7b464549-5dz8x to vishal-hp
+9m12s       Normal    Injected                 deployment/loadgen                          Linkerd sidecar proxy injected
+9m12s       Normal    SuccessfulCreate         replicaset/user-service-7588657948          Created pod: user-service-7588657948-r8z2d
+9m12s       Normal    Scheduled                pod/loadgen-d6bfd4fb4-6m68k                 Successfully assigned network-aware/loadgen-d6bfd4fb4-6m68k to vishal-hp
+9m12s       Normal    ScalingReplicaSet        deployment/gateway                          Scaled up replica set gateway-7f7b464549 from 0 to 1
+9m12s       Normal    SuccessfulCreate         replicaset/gateway-7f7b464549               Created pod: gateway-7f7b464549-5dz8x
+9m12s       Normal    SuccessfulCreate         replicaset/loadgen-d6bfd4fb4                Created pod: loadgen-d6bfd4fb4-6m68k
+9m12s       Normal    ScalingReplicaSet        deployment/loadgen                          Scaled up replica set loadgen-d6bfd4fb4 from 0 to 1
+9m12s       Normal    ScalingReplicaSet        deployment/user-service                     Scaled up replica set user-service-7588657948 from 0 to 1
+9m12s       Normal    Scheduled                pod/logger-service-6fd8bcc784-p7kh5         Successfully assigned network-aware/logger-service-6fd8bcc784-p7kh5 to vishal-hp
+9m12s       Normal    SuccessfulCreate         replicaset/db-service-745db8b757            Created pod: db-service-745db8b757-dbc7f
+9m12s       Normal    ScalingReplicaSet        deployment/logger-service                   Scaled up replica set logger-service-6fd8bcc784 from 0 to 1
+9m12s       Normal    Scheduled                pod/auth-service-946778f5b-sb47q            Successfully assigned network-aware/auth-service-946778f5b-sb47q to vishal-hp
+9m12s       Normal    Injected                 deployment/db-service                       Linkerd sidecar proxy injected
+9m12s       Normal    SuccessfulCreate         replicaset/logger-service-6fd8bcc784        Created pod: logger-service-6fd8bcc784-p7kh5
+9m12s       Normal    SuccessfulCreate         replicaset/auth-service-946778f5b           Created pod: auth-service-946778f5b-sb47q
+9m12s       Normal    ScalingReplicaSet        deployment/db-service                       Scaled up replica set db-service-745db8b757 from 0 to 1
+9m12s       Normal    Scheduled                pod/db-service-745db8b757-dbc7f             Successfully assigned network-aware/db-service-745db8b757-dbc7f to anshul-hp-pavilion-gaming-laptop-15-dk0xxx
+9m12s       Normal    Injected                 deployment/logger-service                   Linkerd sidecar proxy injected
+9m12s       Normal    ScalingReplicaSet        deployment/auth-service                     Scaled up replica set auth-service-946778f5b from 0 to 1
+9m12s       Normal    Scheduled                pod/user-service-7588657948-r8z2d           Successfully assigned network-aware/user-service-7588657948-r8z2d to vishal-hp
+9m11s       Normal    Pulled                   pod/db-service-745db8b757-dbc7f             Container image "cr.l5d.io/linkerd/proxy:edge-26.4.3" already present on machine and can be accessed by the pod
+9m11s       Normal    Created                  pod/db-service-745db8b757-dbc7f             Container created
+9m11s       Normal    Created                  pod/db-service-745db8b757-dbc7f             Container created
+9m11s       Normal    Pulled                   pod/db-service-745db8b757-dbc7f             Container image "cr.l5d.io/linkerd/proxy:edge-26.4.3" already present on machine and can be accessed by the pod
+9m11s       Normal    Started                  pod/db-service-745db8b757-dbc7f             Container started
+9m10s       Normal    IssuedLeafCertificate    serviceaccount/default                      issued certificate for default.network-aware.serviceaccount.identity.linkerd.cluster.local until 2026-04-18 19:54:54 +0000 UTC: f3b40ab805ee9aedbf9d8ce99838157e8c2cc0a65ca1dcbfc894229c42886893
+9m10s       Normal    Started                  pod/db-service-745db8b757-dbc7f             Container started
+9m9s        Normal    Started                  pod/gateway-7f7b464549-5dz8x                Container started
+9m9s        Normal    Pulled                   pod/db-service-745db8b757-dbc7f             Container image "demo-service:latest" already present on machine and can be accessed by the pod
+9m9s        Normal    Created                  pod/gateway-7f7b464549-5dz8x                Container created
+9m9s        Normal    Pulled                   pod/gateway-7f7b464549-5dz8x                Container image "cr.l5d.io/linkerd/proxy:edge-26.4.3" already present on machine and can be accessed by the pod
+9m9s        Normal    Pulled                   pod/auth-service-946778f5b-sb47q            Container image "cr.l5d.io/linkerd/proxy:edge-26.4.3" already present on machine and can be accessed by the pod
+9m9s        Normal    Started                  pod/db-service-745db8b757-dbc7f             Container started
+9m9s        Normal    Created                  pod/db-service-745db8b757-dbc7f             Container created
+9m8s        Normal    Pulled                   pod/logger-service-6fd8bcc784-p7kh5         Container image "cr.l5d.io/linkerd/proxy:edge-26.4.3" already present on machine and can be accessed by the pod
+9m8s        Normal    Created                  pod/auth-service-946778f5b-sb47q            Container created
+9m8s        Warning   Unhealthy                pod/db-service-745db8b757-dbc7f             Readiness probe failed: HTTP probe failed with statuscode: 502
+9m8s        Normal    Started                  pod/auth-service-946778f5b-sb47q            Container started
+9m7s        Normal    Created                  pod/gateway-7f7b464549-5dz8x                Container created
+9m7s        Normal    Started                  pod/logger-service-6fd8bcc784-p7kh5         Container started
+9m7s        Normal    Started                  pod/auth-service-946778f5b-sb47q            Container started
+9m7s        Normal    Created                  pod/auth-service-946778f5b-sb47q            Container created
+9m7s        Normal    Pulled                   pod/gateway-7f7b464549-5dz8x                Container image "cr.l5d.io/linkerd/proxy:edge-26.4.3" already present on machine and can be accessed by the pod
+9m7s        Normal    Pulled                   pod/auth-service-946778f5b-sb47q            Container image "cr.l5d.io/linkerd/proxy:edge-26.4.3" already present on machine and can be accessed by the pod
+9m7s        Normal    Created                  pod/logger-service-6fd8bcc784-p7kh5         Container created
+9m7s        Normal    Pulled                   pod/user-service-7588657948-r8z2d           Container image "cr.l5d.io/linkerd/proxy:edge-26.4.3" already present on machine and can be accessed by the pod
+9m7s        Normal    Created                  pod/user-service-7588657948-r8z2d           Container created
+9m6s        Normal    Created                  pod/user-service-7588657948-r8z2d           Container created
+9m6s        Normal    IssuedLeafCertificate    serviceaccount/default                      issued certificate for default.network-aware.serviceaccount.identity.linkerd.cluster.local until 2026-04-18 19:54:58 +0000 UTC: 333d6bfcaf613b6a4f1298558022b8869d6b977c5bd371a00e617d3ef4b5ee8b
+9m6s        Normal    Pulled                   pod/user-service-7588657948-r8z2d           Container image "cr.l5d.io/linkerd/proxy:edge-26.4.3" already present on machine and can be accessed by the pod
+9m6s        Normal    Pulled                   pod/loadgen-d6bfd4fb4-6m68k                 Container image "cr.l5d.io/linkerd/proxy:edge-26.4.3" already present on machine and can be accessed by the pod
+9m6s        Normal    Started                  pod/user-service-7588657948-r8z2d           Container started
+9m6s        Normal    Pulled                   pod/logger-service-6fd8bcc784-p7kh5         Container image "cr.l5d.io/linkerd/proxy:edge-26.4.3" already present on machine and can be accessed by the pod
+9m6s        Normal    Started                  pod/gateway-7f7b464549-5dz8x                Container started
+9m6s        Normal    Created                  pod/logger-service-6fd8bcc784-p7kh5         Container created
+9m6s        Normal    Created                  pod/loadgen-d6bfd4fb4-6m68k                 Container created
+9m5s        Normal    IssuedLeafCertificate    serviceaccount/default                      issued certificate for default.network-aware.serviceaccount.identity.linkerd.cluster.local until 2026-04-18 19:54:59 +0000 UTC: 4b89c06f550716994b3d25742a7f607b9515d25aa99d83f0de2db5fce401bb35
+9m5s        Normal    IssuedLeafCertificate    serviceaccount/default                      issued certificate for default.network-aware.serviceaccount.identity.linkerd.cluster.local until 2026-04-18 19:54:59 +0000 UTC: 553dc19443046512f757602ab58f8d44073cd3edfeabb2d3339f2a06a181a159
+9m5s        Normal    Started                  pod/loadgen-d6bfd4fb4-6m68k                 Container started
+9m5s        Normal    Started                  pod/user-service-7588657948-r8z2d           Container started
+9m5s        Normal    Pulled                   pod/loadgen-d6bfd4fb4-6m68k                 Container image "cr.l5d.io/linkerd/proxy:edge-26.4.3" already present on machine and can be accessed by the pod
+9m5s        Normal    Pulled                   pod/gateway-7f7b464549-5dz8x                Container image "demo-service:latest" already present on machine and can be accessed by the pod
+9m5s        Normal    Pulled                   pod/auth-service-946778f5b-sb47q            Container image "demo-service:latest" already present on machine and can be accessed by the pod
+9m5s        Normal    IssuedLeafCertificate    serviceaccount/default                      issued certificate for default.network-aware.serviceaccount.identity.linkerd.cluster.local until 2026-04-18 19:54:59 +0000 UTC: 113a01a9b340bf32528d0b09db00bd77903b1bc9931dfa5e17bcd128f44f6fc3
+9m5s        Normal    Started                  pod/logger-service-6fd8bcc784-p7kh5         Container started
+9m4s        Normal    Created                  pod/logger-service-6fd8bcc784-p7kh5         Container created
+9m4s        Normal    IssuedLeafCertificate    serviceaccount/default                      issued certificate for default.network-aware.serviceaccount.identity.linkerd.cluster.local until 2026-04-18 19:55:00 +0000 UTC: 9f983bd62eedba69c77b26083ad7f74b0f0203727d993e236ed35134b67994df
+9m4s        Normal    Started                  pod/gateway-7f7b464549-5dz8x                Container started
+9m4s        Normal    Pulled                   pod/logger-service-6fd8bcc784-p7kh5         Container image "demo-service:latest" already present on machine and can be accessed by the pod
+9m4s        Normal    Created                  pod/gateway-7f7b464549-5dz8x                Container created
+9m4s        Normal    Created                  pod/auth-service-946778f5b-sb47q            Container created
+9m4s        Normal    Started                  pod/auth-service-946778f5b-sb47q            Container started
+9m4s        Normal    Created                  pod/loadgen-d6bfd4fb4-6m68k                 Container created
+9m4s        Normal    Created                  pod/user-service-7588657948-r8z2d           Container created
+9m4s        Normal    Started                  pod/loadgen-d6bfd4fb4-6m68k                 Container started
+9m4s        Normal    Pulled                   pod/user-service-7588657948-r8z2d           Container image "demo-service:latest" already present on machine and can be accessed by the pod
+9m3s        Normal    Started                  pod/user-service-7588657948-r8z2d           Container started
+9m3s        Normal    Started                  pod/logger-service-6fd8bcc784-p7kh5         Container started
+9m3s        Normal    Pulled                   pod/loadgen-d6bfd4fb4-6m68k                 Container image "demo-loadgen:latest" already present on machine and can be accessed by the pod
+9m2s        Warning   Unhealthy                pod/gateway-7f7b464549-5dz8x                Readiness probe failed: HTTP probe failed with statuscode: 502
+9m2s        Normal    Started                  pod/loadgen-d6bfd4fb4-6m68k                 Container started
+9m2s        Normal    Created                  pod/loadgen-d6bfd4fb4-6m68k                 Container created
+9m2s        Warning   Unhealthy                pod/auth-service-946778f5b-sb47q            Readiness probe failed: HTTP probe failed with statuscode: 502
+9m          Warning   Unhealthy                pod/user-service-7588657948-r8z2d           Readiness probe failed: HTTP probe failed with statuscode: 502
+8m50s       Warning   Unhealthy                pod/logger-service-6fd8bcc784-p7kh5         Readiness probe failed: HTTP probe failed with statuscode: 502
+3m34s       Normal    ScalingReplicaSet        deployment/network-rescheduler              Scaled up replica set network-rescheduler-5b6d7ff6bc from 0 to 1
+3m32s       Normal    SuccessfulCreate         replicaset/network-rescheduler-5b6d7ff6bc   Created pod: network-rescheduler-5b6d7ff6bc-nfbs8
+3m32s       Warning   FailedCreatePodSandBox   pod/network-rescheduler-5b6d7ff6bc-nfbs8    Failed to create pod sandbox: rpc error: code = Unknown desc = failed to setup network for sandbox "74eda6c6aac05d80488098cb471f2b10cc44418b7e81d4335c6cb320b44be745": plugin type="calico" failed (add): error adding host side routes for interface: califde7f0c3007, error: route (Ifindex: 5907, Dst: 172.16.176.23/32, Scope: link) already exists for an interface other than 'califde7f0c3007': route (Ifindex: 45, Dst: 172.16.176.23/32, Scope: link, Iface: calicfe8c52cd67)
+3m32s       Normal    Scheduled                pod/network-rescheduler-5b6d7ff6bc-nfbs8    Successfully assigned network-aware/network-rescheduler-5b6d7ff6bc-nfbs8 to archlinux
+3m32s       Normal    Injected                 deployment/network-rescheduler              Linkerd sidecar proxy injected
+3m31s       Warning   FailedCreatePodSandBox   pod/network-rescheduler-5b6d7ff6bc-nfbs8    Failed to create pod sandbox: rpc error: code = Unknown desc = failed to setup network for sandbox "128e45dbffd1622457fe3f44072774a3db04b9b3971deb3d2d7536adac4dee4f": plugin type="calico" failed (add): error adding host side routes for interface: califde7f0c3007, error: route (Ifindex: 5908, Dst: 172.16.176.24/32, Scope: link) already exists for an interface other than 'califde7f0c3007': route (Ifindex: 46, Dst: 172.16.176.24/32, Scope: link, Iface: cali4d68945da53)
+3m16s       Normal    Started                  pod/network-rescheduler-5b6d7ff6bc-nfbs8    Container started
+3m16s       Normal    Created                  pod/network-rescheduler-5b6d7ff6bc-nfbs8    Container created
+3m16s       Normal    Pulled                   pod/network-rescheduler-5b6d7ff6bc-nfbs8    Container image "cr.l5d.io/linkerd/proxy:edge-26.4.3" already present on machine and can be accessed by the pod
+3m15s       Normal    Pulled                   pod/network-rescheduler-5b6d7ff6bc-nfbs8    Container image "cr.l5d.io/linkerd/proxy:edge-26.4.3" already present on machine and can be accessed by the pod
+3m15s       Normal    IssuedLeafCertificate    serviceaccount/network-rescheduler          issued certificate for network-rescheduler.network-aware.serviceaccount.identity.linkerd.cluster.local until 2026-04-18 20:00:49 +0000 UTC: e940435851f75136c3d442b47bea00c476a70fef96ca4a67159e23f6483e80e2
+3m15s       Normal    Created                  pod/network-rescheduler-5b6d7ff6bc-nfbs8    Container created
+3m15s       Normal    Started                  pod/network-rescheduler-5b6d7ff6bc-nfbs8    Container started
+3m14s       Normal    Created                  pod/network-rescheduler-5b6d7ff6bc-nfbs8    Container created
+3m14s       Normal    Pulled                   pod/network-rescheduler-5b6d7ff6bc-nfbs8    Container image "network-rescheduler:latest" already present on machine and can be accessed by the pod
+3m14s       Normal    Started                  pod/network-rescheduler-5b6d7ff6bc-nfbs8    Container started
+3m11s       Normal    ScalingReplicaSet        deployment/auth-service                     Scaled up replica set auth-service-7b8fcd4bc8 from 0 to 1
+3m11s       Normal    Scheduled                pod/auth-service-7b8fcd4bc8-fls7c           Successfully assigned network-aware/auth-service-7b8fcd4bc8-fls7c to anshul-hp-pavilion-gaming-laptop-15-dk0xxx
+3m11s       Normal    Injected                 deployment/auth-service                     Linkerd sidecar proxy injected
+3m11s       Normal    SuccessfulCreate         replicaset/auth-service-7b8fcd4bc8          Created pod: auth-service-7b8fcd4bc8-fls7c
+3m8s        Normal    Started                  pod/auth-service-7b8fcd4bc8-fls7c           Container started
+3m8s        Normal    Pulled                   pod/auth-service-7b8fcd4bc8-fls7c           Container image "cr.l5d.io/linkerd/proxy:edge-26.4.3" already present on machine and can be accessed by the pod
+3m8s        Normal    Created                  pod/auth-service-7b8fcd4bc8-fls7c           Container created
+3m7s        Normal    Started                  pod/auth-service-7b8fcd4bc8-fls7c           Container started
+3m7s        Normal    Created                  pod/auth-service-7b8fcd4bc8-fls7c           Container created
+3m7s        Normal    Pulled                   pod/auth-service-7b8fcd4bc8-fls7c           Container image "cr.l5d.io/linkerd/proxy:edge-26.4.3" already present on machine and can be accessed by the pod
+3m7s        Normal    IssuedLeafCertificate    serviceaccount/default                      issued certificate for default.network-aware.serviceaccount.identity.linkerd.cluster.local until 2026-04-18 20:00:57 +0000 UTC: 470951b725d3cb0f0afebbf47f6314b7e2e2316ea80c1dc8ed67f7fc093b5bf7
+3m6s        Normal    Pulled                   pod/auth-service-7b8fcd4bc8-fls7c           Container image "demo-service:latest" already present on machine and can be accessed by the pod
+3m6s        Normal    Created                  pod/auth-service-7b8fcd4bc8-fls7c           Container created
+3m6s        Normal    Started                  pod/auth-service-7b8fcd4bc8-fls7c           Container started
+3m3s        Warning   Unhealthy                pod/auth-service-7b8fcd4bc8-fls7c           Readiness probe failed: HTTP probe failed with statuscode: 502
+2m53s       Normal    Killing                  pod/auth-service-946778f5b-sb47q            Stopping container service
+2m53s       Normal    ScalingReplicaSet        deployment/auth-service                     Scaled down replica set auth-service-946778f5b from 1 to 0
+2m53s       Normal    SuccessfulDelete         replicaset/auth-service-946778f5b           Deleted pod: auth-service-946778f5b-sb47q
+2m53s       Normal    Killing                  pod/auth-service-946778f5b-sb47q            Stopping container linkerd-proxy
+2m40s       Normal    SuccessfulCreate         replicaset/gateway-69bbfdcf6f               Created pod: gateway-69bbfdcf6f-xkb42
+2m40s       Normal    Injected                 deployment/gateway                          Linkerd sidecar proxy injected
+2m40s       Normal    Scheduled                pod/gateway-69bbfdcf6f-xkb42                Successfully assigned network-aware/gateway-69bbfdcf6f-xkb42 to anshul-hp-pavilion-gaming-laptop-15-dk0xxx
+2m40s       Normal    ScalingReplicaSet        deployment/gateway                          Scaled up replica set gateway-69bbfdcf6f from 0 to 1
+2m39s       Normal    Created                  pod/gateway-69bbfdcf6f-xkb42                Container created
+2m39s       Normal    Created                  pod/gateway-69bbfdcf6f-xkb42                Container created
+2m39s       Normal    Started                  pod/gateway-69bbfdcf6f-xkb42                Container started
+2m39s       Normal    IssuedLeafCertificate    serviceaccount/default                      issued certificate for default.network-aware.serviceaccount.identity.linkerd.cluster.local until 2026-04-18 20:01:25 +0000 UTC: 7ce3cb819fb75292dc51c10f6bc92c4e9e6c7497112f3676d5b0ee21d5950279
+2m39s       Normal    Pulled                   pod/gateway-69bbfdcf6f-xkb42                Container image "cr.l5d.io/linkerd/proxy:edge-26.4.3" already present on machine and can be accessed by the pod
+2m39s       Normal    Pulled                   pod/gateway-69bbfdcf6f-xkb42                Container image "cr.l5d.io/linkerd/proxy:edge-26.4.3" already present on machine and can be accessed by the pod
+2m39s       Normal    Started                  pod/gateway-69bbfdcf6f-xkb42                Container started
+2m38s       Normal    Pulled                   pod/gateway-69bbfdcf6f-xkb42                Container image "demo-service:latest" already present on machine and can be accessed by the pod
+2m38s       Normal    Created                  pod/gateway-69bbfdcf6f-xkb42                Container created
+2m38s       Normal    Started                  pod/gateway-69bbfdcf6f-xkb42                Container started
+2m35s       Warning   Unhealthy                pod/gateway-69bbfdcf6f-xkb42                Readiness probe failed: HTTP probe failed with statuscode: 502
+2m32s       Warning   Unhealthy                pod/auth-service-946778f5b-sb47q            Readiness probe failed: Get "http://172.16.47.52:8000/readyz": dial tcp 172.16.47.52:8000: connect: connection refused
+2m25s       Normal    Killing                  pod/gateway-7f7b464549-5dz8x                Stopping container service
+2m25s       Normal    Killing                  pod/gateway-7f7b464549-5dz8x                Stopping container linkerd-proxy
+2m25s       Normal    ScalingReplicaSet        deployment/gateway                          Scaled down replica set gateway-7f7b464549 from 1 to 0
+2m25s       Normal    SuccessfulDelete         replicaset/gateway-7f7b464549               Deleted pod: gateway-7f7b464549-5dz8x
+2m24s       Warning   Unhealthy                pod/auth-service-946778f5b-sb47q            Readiness probe failed: Get "http://172.16.47.52:4191/ready": dial tcp 172.16.47.52:4191: connect: connection refused
+2m22s       Warning   Unhealthy                pod/auth-service-946778f5b-sb47q            Readiness probe failed: Get "http://172.16.47.52:8000/readyz": dial tcp 172.16.47.52:8000: connect: invalid argument
+2m9s        Normal    SuccessfulCreate         replicaset/user-service-59c464854b          Created pod: user-service-59c464854b-kmvnf
+2m9s        Normal    Injected                 deployment/user-service                     Linkerd sidecar proxy injected
+2m9s        Normal    ScalingReplicaSet        deployment/user-service                     Scaled up replica set user-service-59c464854b from 0 to 1
+2m9s        Normal    Scheduled                pod/user-service-59c464854b-kmvnf           Successfully assigned network-aware/user-service-59c464854b-kmvnf to anshul-hp-pavilion-gaming-laptop-15-dk0xxx
+2m8s        Normal    Started                  pod/user-service-59c464854b-kmvnf           Container started
+2m8s        Normal    Created                  pod/user-service-59c464854b-kmvnf           Container created
+2m8s        Normal    Pulled                   pod/user-service-59c464854b-kmvnf           Container image "cr.l5d.io/linkerd/proxy:edge-26.4.3" already present on machine and can be accessed by the pod
+2m8s        Normal    Started                  pod/user-service-59c464854b-kmvnf           Container started
+2m8s        Normal    Created                  pod/user-service-59c464854b-kmvnf           Container created
+2m8s        Normal    Pulled                   pod/user-service-59c464854b-kmvnf           Container image "cr.l5d.io/linkerd/proxy:edge-26.4.3" already present on machine and can be accessed by the pod
+2m8s        Normal    IssuedLeafCertificate    serviceaccount/default                      issued certificate for default.network-aware.serviceaccount.identity.linkerd.cluster.local until 2026-04-18 20:01:56 +0000 UTC: 054f9555d9031932f3324a4e20cfea1fa83d8f06e5071957d479cbd5d1dbce22
+2m7s        Normal    Created                  pod/user-service-59c464854b-kmvnf           Container created
+2m7s        Normal    Started                  pod/user-service-59c464854b-kmvnf           Container started
+2m7s        Normal    Pulled                   pod/user-service-59c464854b-kmvnf           Container image "demo-service:latest" already present on machine and can be accessed by the pod
+2m4s        Warning   Unhealthy                pod/gateway-7f7b464549-5dz8x                Readiness probe failed: Get "http://172.16.47.51:4191/ready": dial tcp 172.16.47.51:4191: connect: connection refused
+2m4s        Warning   Unhealthy                pod/user-service-59c464854b-kmvnf           Readiness probe failed: HTTP probe failed with statuscode: 502
+2m2s        Warning   Unhealthy                pod/gateway-7f7b464549-5dz8x                Readiness probe failed: Get "http://172.16.47.51:8000/readyz": dial tcp 172.16.47.51:8000: connect: connection refused
+114s        Warning   Unhealthy                pod/gateway-7f7b464549-5dz8x                Readiness probe failed: Get "http://172.16.47.51:4191/ready": dial tcp 172.16.47.51:4191: connect: invalid argument
+114s        Normal    Killing                  pod/user-service-7588657948-r8z2d           Stopping container linkerd-proxy
+114s        Normal    Killing                  pod/user-service-7588657948-r8z2d           Stopping container service
+114s        Normal    SuccessfulDelete         replicaset/user-service-7588657948          Deleted pod: user-service-7588657948-r8z2d
+114s        Normal    ScalingReplicaSet        deployment/user-service                     Scaled down replica set user-service-7588657948 from 1 to 0
+92s         Warning   Unhealthy                pod/user-service-7588657948-r8z2d           Readiness probe failed: Get "http://172.16.47.54:4191/ready": dial tcp 172.16.47.54:4191: connect: connection refused
+90s         Warning   Unhealthy                pod/user-service-7588657948-r8z2d           Readiness probe failed: Get "http://172.16.47.54:8000/readyz": dial tcp 172.16.47.54:8000: connect: connection refused

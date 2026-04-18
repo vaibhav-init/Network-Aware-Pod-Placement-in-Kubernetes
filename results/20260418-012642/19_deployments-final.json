@@ -1,0 +1,1127 @@
+{
+  "apiVersion": "v1",
+  "items": [
+    {
+      "apiVersion": "apps/v1",
+      "kind": "Deployment",
+      "metadata": {
+        "annotations": {
+          "deployment.kubernetes.io/revision": "2",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{\"network-aware/movable\":\"true\"},\"name\":\"auth-service\",\"namespace\":\"network-aware\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"app\":\"auth-service\"}},\"strategy\":{\"rollingUpdate\":{\"maxSurge\":1,\"maxUnavailable\":0},\"type\":\"RollingUpdate\"},\"template\":{\"metadata\":{\"annotations\":{\"linkerd.io/inject\":\"enabled\"},\"labels\":{\"app\":\"auth-service\"}},\"spec\":{\"affinity\":{\"nodeAffinity\":{\"requiredDuringSchedulingIgnoredDuringExecution\":{\"nodeSelectorTerms\":[{\"matchExpressions\":[{\"key\":\"network-aware/role\",\"operator\":\"In\",\"values\":[\"initial-app\"]}]}]}}},\"containers\":[{\"env\":[{\"name\":\"SERVICE_NAME\",\"value\":\"auth-service\"},{\"name\":\"UPSTREAMS\",\"value\":\"db-service=http://db-service:8000/db\"},{\"name\":\"PROCESSING_DELAY_MS\",\"value\":\"10\"}],\"image\":\"demo-service:latest\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"service\",\"ports\":[{\"containerPort\":8000}],\"readinessProbe\":{\"httpGet\":{\"path\":\"/readyz\",\"port\":8000}},\"resources\":{\"limits\":{\"cpu\":\"150m\",\"memory\":\"128Mi\"},\"requests\":{\"cpu\":\"40m\",\"memory\":\"48Mi\"}}}],\"tolerations\":[{\"effect\":\"NoSchedule\",\"key\":\"node-role.kubernetes.io/control-plane\",\"operator\":\"Exists\"},{\"effect\":\"NoSchedule\",\"key\":\"node-role.kubernetes.io/master\",\"operator\":\"Exists\"}]}}}}\n",
+          "network-aware/last-move-at": "2026-04-17T20:00:33.446337+00:00",
+          "network-aware/movable": "true",
+          "network-aware/target-node": "anshul-hp-pavilion-gaming-laptop-15-dk0xxx"
+        },
+        "creationTimestamp": "2026-04-17T19:54:32Z",
+        "generation": 2,
+        "name": "auth-service",
+        "namespace": "network-aware",
+        "resourceVersion": "122024",
+        "uid": "fc3f4361-8981-40ff-9822-e131ac902efc"
+      },
+      "spec": {
+        "progressDeadlineSeconds": 600,
+        "replicas": 1,
+        "revisionHistoryLimit": 10,
+        "selector": {
+          "matchLabels": {
+            "app": "auth-service"
+          }
+        },
+        "strategy": {
+          "rollingUpdate": {
+            "maxSurge": 1,
+            "maxUnavailable": 0
+          },
+          "type": "RollingUpdate"
+        },
+        "template": {
+          "metadata": {
+            "annotations": {
+              "linkerd.io/inject": "enabled",
+              "network-aware/rollout-at": "2026-04-17T20:00:33.446337+00:00"
+            },
+            "labels": {
+              "app": "auth-service"
+            }
+          },
+          "spec": {
+            "affinity": {
+              "nodeAffinity": {
+                "requiredDuringSchedulingIgnoredDuringExecution": {
+                  "nodeSelectorTerms": [
+                    {
+                      "matchExpressions": [
+                        {
+                          "key": "kubernetes.io/hostname",
+                          "operator": "In",
+                          "values": [
+                            "anshul-hp-pavilion-gaming-laptop-15-dk0xxx"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            },
+            "containers": [
+              {
+                "env": [
+                  {
+                    "name": "SERVICE_NAME",
+                    "value": "auth-service"
+                  },
+                  {
+                    "name": "UPSTREAMS",
+                    "value": "db-service=http://db-service:8000/db"
+                  },
+                  {
+                    "name": "PROCESSING_DELAY_MS",
+                    "value": "10"
+                  }
+                ],
+                "image": "demo-service:latest",
+                "imagePullPolicy": "IfNotPresent",
+                "name": "service",
+                "ports": [
+                  {
+                    "containerPort": 8000,
+                    "protocol": "TCP"
+                  }
+                ],
+                "readinessProbe": {
+                  "failureThreshold": 3,
+                  "httpGet": {
+                    "path": "/readyz",
+                    "port": 8000,
+                    "scheme": "HTTP"
+                  },
+                  "periodSeconds": 10,
+                  "successThreshold": 1,
+                  "timeoutSeconds": 1
+                },
+                "resources": {
+                  "limits": {
+                    "cpu": "150m",
+                    "memory": "128Mi"
+                  },
+                  "requests": {
+                    "cpu": "40m",
+                    "memory": "48Mi"
+                  }
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File"
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "Always",
+            "schedulerName": "default-scheduler",
+            "securityContext": {},
+            "terminationGracePeriodSeconds": 30,
+            "tolerations": [
+              {
+                "effect": "NoSchedule",
+                "key": "node-role.kubernetes.io/control-plane",
+                "operator": "Exists"
+              },
+              {
+                "effect": "NoSchedule",
+                "key": "node-role.kubernetes.io/master",
+                "operator": "Exists"
+              }
+            ]
+          }
+        }
+      },
+      "status": {
+        "availableReplicas": 1,
+        "conditions": [
+          {
+            "lastTransitionTime": "2026-04-17T19:54:53Z",
+            "lastUpdateTime": "2026-04-17T19:54:53Z",
+            "message": "Deployment has minimum availability.",
+            "reason": "MinimumReplicasAvailable",
+            "status": "True",
+            "type": "Available"
+          },
+          {
+            "lastTransitionTime": "2026-04-17T19:54:32Z",
+            "lastUpdateTime": "2026-04-17T20:00:51Z",
+            "message": "ReplicaSet \"auth-service-7b8fcd4bc8\" has successfully progressed.",
+            "reason": "NewReplicaSetAvailable",
+            "status": "True",
+            "type": "Progressing"
+          }
+        ],
+        "observedGeneration": 2,
+        "readyReplicas": 1,
+        "replicas": 1,
+        "terminatingReplicas": 0,
+        "updatedReplicas": 1
+      }
+    },
+    {
+      "apiVersion": "apps/v1",
+      "kind": "Deployment",
+      "metadata": {
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{\"network-aware/movable\":\"false\"},\"name\":\"db-service\",\"namespace\":\"network-aware\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"app\":\"db-service\"}},\"strategy\":{\"rollingUpdate\":{\"maxSurge\":1,\"maxUnavailable\":0},\"type\":\"RollingUpdate\"},\"template\":{\"metadata\":{\"annotations\":{\"linkerd.io/inject\":\"enabled\"},\"labels\":{\"app\":\"db-service\"}},\"spec\":{\"affinity\":{\"nodeAffinity\":{\"requiredDuringSchedulingIgnoredDuringExecution\":{\"nodeSelectorTerms\":[{\"matchExpressions\":[{\"key\":\"network-aware/role\",\"operator\":\"In\",\"values\":[\"anchor\"]}]}]}}},\"containers\":[{\"env\":[{\"name\":\"SERVICE_NAME\",\"value\":\"db-service\"},{\"name\":\"PROCESSING_DELAY_MS\",\"value\":\"15\"}],\"image\":\"demo-service:latest\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"service\",\"ports\":[{\"containerPort\":8000}],\"readinessProbe\":{\"httpGet\":{\"path\":\"/readyz\",\"port\":8000}},\"resources\":{\"limits\":{\"cpu\":\"250m\",\"memory\":\"192Mi\"},\"requests\":{\"cpu\":\"60m\",\"memory\":\"80Mi\"}}}],\"tolerations\":[{\"effect\":\"NoSchedule\",\"key\":\"node-role.kubernetes.io/control-plane\",\"operator\":\"Exists\"},{\"effect\":\"NoSchedule\",\"key\":\"node-role.kubernetes.io/master\",\"operator\":\"Exists\"}]}}}}\n",
+          "network-aware/movable": "false"
+        },
+        "creationTimestamp": "2026-04-17T19:54:32Z",
+        "generation": 1,
+        "name": "db-service",
+        "namespace": "network-aware",
+        "resourceVersion": "120907",
+        "uid": "ecd6db5c-2df5-4b87-957d-9fb1dc61ad46"
+      },
+      "spec": {
+        "progressDeadlineSeconds": 600,
+        "replicas": 1,
+        "revisionHistoryLimit": 10,
+        "selector": {
+          "matchLabels": {
+            "app": "db-service"
+          }
+        },
+        "strategy": {
+          "rollingUpdate": {
+            "maxSurge": 1,
+            "maxUnavailable": 0
+          },
+          "type": "RollingUpdate"
+        },
+        "template": {
+          "metadata": {
+            "annotations": {
+              "linkerd.io/inject": "enabled"
+            },
+            "labels": {
+              "app": "db-service"
+            }
+          },
+          "spec": {
+            "affinity": {
+              "nodeAffinity": {
+                "requiredDuringSchedulingIgnoredDuringExecution": {
+                  "nodeSelectorTerms": [
+                    {
+                      "matchExpressions": [
+                        {
+                          "key": "network-aware/role",
+                          "operator": "In",
+                          "values": [
+                            "anchor"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            },
+            "containers": [
+              {
+                "env": [
+                  {
+                    "name": "SERVICE_NAME",
+                    "value": "db-service"
+                  },
+                  {
+                    "name": "PROCESSING_DELAY_MS",
+                    "value": "15"
+                  }
+                ],
+                "image": "demo-service:latest",
+                "imagePullPolicy": "IfNotPresent",
+                "name": "service",
+                "ports": [
+                  {
+                    "containerPort": 8000,
+                    "protocol": "TCP"
+                  }
+                ],
+                "readinessProbe": {
+                  "failureThreshold": 3,
+                  "httpGet": {
+                    "path": "/readyz",
+                    "port": 8000,
+                    "scheme": "HTTP"
+                  },
+                  "periodSeconds": 10,
+                  "successThreshold": 1,
+                  "timeoutSeconds": 1
+                },
+                "resources": {
+                  "limits": {
+                    "cpu": "250m",
+                    "memory": "192Mi"
+                  },
+                  "requests": {
+                    "cpu": "60m",
+                    "memory": "80Mi"
+                  }
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File"
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "Always",
+            "schedulerName": "default-scheduler",
+            "securityContext": {},
+            "terminationGracePeriodSeconds": 30,
+            "tolerations": [
+              {
+                "effect": "NoSchedule",
+                "key": "node-role.kubernetes.io/control-plane",
+                "operator": "Exists"
+              },
+              {
+                "effect": "NoSchedule",
+                "key": "node-role.kubernetes.io/master",
+                "operator": "Exists"
+              }
+            ]
+          }
+        }
+      },
+      "status": {
+        "availableReplicas": 1,
+        "conditions": [
+          {
+            "lastTransitionTime": "2026-04-17T19:54:37Z",
+            "lastUpdateTime": "2026-04-17T19:54:37Z",
+            "message": "Deployment has minimum availability.",
+            "reason": "MinimumReplicasAvailable",
+            "status": "True",
+            "type": "Available"
+          },
+          {
+            "lastTransitionTime": "2026-04-17T19:54:32Z",
+            "lastUpdateTime": "2026-04-17T19:54:37Z",
+            "message": "ReplicaSet \"db-service-745db8b757\" has successfully progressed.",
+            "reason": "NewReplicaSetAvailable",
+            "status": "True",
+            "type": "Progressing"
+          }
+        ],
+        "observedGeneration": 1,
+        "readyReplicas": 1,
+        "replicas": 1,
+        "terminatingReplicas": 0,
+        "updatedReplicas": 1
+      }
+    },
+    {
+      "apiVersion": "apps/v1",
+      "kind": "Deployment",
+      "metadata": {
+        "annotations": {
+          "deployment.kubernetes.io/revision": "2",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{\"network-aware/movable\":\"true\"},\"name\":\"gateway\",\"namespace\":\"network-aware\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"app\":\"gateway\"}},\"strategy\":{\"rollingUpdate\":{\"maxSurge\":1,\"maxUnavailable\":0},\"type\":\"RollingUpdate\"},\"template\":{\"metadata\":{\"annotations\":{\"linkerd.io/inject\":\"enabled\"},\"labels\":{\"app\":\"gateway\"}},\"spec\":{\"affinity\":{\"nodeAffinity\":{\"requiredDuringSchedulingIgnoredDuringExecution\":{\"nodeSelectorTerms\":[{\"matchExpressions\":[{\"key\":\"network-aware/role\",\"operator\":\"In\",\"values\":[\"initial-app\"]}]}]}}},\"containers\":[{\"env\":[{\"name\":\"SERVICE_NAME\",\"value\":\"gateway\"},{\"name\":\"UPSTREAMS\",\"value\":\"auth-service=http://auth-service:8000/auth,user-service=http://user-service:8000/user,logger-service=http://logger-service:8000/log\"}],\"image\":\"demo-service:latest\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"service\",\"ports\":[{\"containerPort\":8000}],\"readinessProbe\":{\"httpGet\":{\"path\":\"/readyz\",\"port\":8000}},\"resources\":{\"limits\":{\"cpu\":\"200m\",\"memory\":\"128Mi\"},\"requests\":{\"cpu\":\"50m\",\"memory\":\"64Mi\"}}}],\"tolerations\":[{\"effect\":\"NoSchedule\",\"key\":\"node-role.kubernetes.io/control-plane\",\"operator\":\"Exists\"},{\"effect\":\"NoSchedule\",\"key\":\"node-role.kubernetes.io/master\",\"operator\":\"Exists\"}]}}}}\n",
+          "network-aware/last-move-at": "2026-04-17T20:01:04.237040+00:00",
+          "network-aware/movable": "true",
+          "network-aware/target-node": "anshul-hp-pavilion-gaming-laptop-15-dk0xxx"
+        },
+        "creationTimestamp": "2026-04-17T19:54:32Z",
+        "generation": 2,
+        "name": "gateway",
+        "namespace": "network-aware",
+        "resourceVersion": "122150",
+        "uid": "649894e5-72aa-49bd-b628-c4c489fb67de"
+      },
+      "spec": {
+        "progressDeadlineSeconds": 600,
+        "replicas": 1,
+        "revisionHistoryLimit": 10,
+        "selector": {
+          "matchLabels": {
+            "app": "gateway"
+          }
+        },
+        "strategy": {
+          "rollingUpdate": {
+            "maxSurge": 1,
+            "maxUnavailable": 0
+          },
+          "type": "RollingUpdate"
+        },
+        "template": {
+          "metadata": {
+            "annotations": {
+              "linkerd.io/inject": "enabled",
+              "network-aware/rollout-at": "2026-04-17T20:01:04.237040+00:00"
+            },
+            "labels": {
+              "app": "gateway"
+            }
+          },
+          "spec": {
+            "affinity": {
+              "nodeAffinity": {
+                "requiredDuringSchedulingIgnoredDuringExecution": {
+                  "nodeSelectorTerms": [
+                    {
+                      "matchExpressions": [
+                        {
+                          "key": "kubernetes.io/hostname",
+                          "operator": "In",
+                          "values": [
+                            "anshul-hp-pavilion-gaming-laptop-15-dk0xxx"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            },
+            "containers": [
+              {
+                "env": [
+                  {
+                    "name": "SERVICE_NAME",
+                    "value": "gateway"
+                  },
+                  {
+                    "name": "UPSTREAMS",
+                    "value": "auth-service=http://auth-service:8000/auth,user-service=http://user-service:8000/user,logger-service=http://logger-service:8000/log"
+                  }
+                ],
+                "image": "demo-service:latest",
+                "imagePullPolicy": "IfNotPresent",
+                "name": "service",
+                "ports": [
+                  {
+                    "containerPort": 8000,
+                    "protocol": "TCP"
+                  }
+                ],
+                "readinessProbe": {
+                  "failureThreshold": 3,
+                  "httpGet": {
+                    "path": "/readyz",
+                    "port": 8000,
+                    "scheme": "HTTP"
+                  },
+                  "periodSeconds": 10,
+                  "successThreshold": 1,
+                  "timeoutSeconds": 1
+                },
+                "resources": {
+                  "limits": {
+                    "cpu": "200m",
+                    "memory": "128Mi"
+                  },
+                  "requests": {
+                    "cpu": "50m",
+                    "memory": "64Mi"
+                  }
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File"
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "Always",
+            "schedulerName": "default-scheduler",
+            "securityContext": {},
+            "terminationGracePeriodSeconds": 30,
+            "tolerations": [
+              {
+                "effect": "NoSchedule",
+                "key": "node-role.kubernetes.io/control-plane",
+                "operator": "Exists"
+              },
+              {
+                "effect": "NoSchedule",
+                "key": "node-role.kubernetes.io/master",
+                "operator": "Exists"
+              }
+            ]
+          }
+        }
+      },
+      "status": {
+        "availableReplicas": 1,
+        "conditions": [
+          {
+            "lastTransitionTime": "2026-04-17T19:54:53Z",
+            "lastUpdateTime": "2026-04-17T19:54:53Z",
+            "message": "Deployment has minimum availability.",
+            "reason": "MinimumReplicasAvailable",
+            "status": "True",
+            "type": "Available"
+          },
+          {
+            "lastTransitionTime": "2026-04-17T19:54:32Z",
+            "lastUpdateTime": "2026-04-17T20:01:19Z",
+            "message": "ReplicaSet \"gateway-69bbfdcf6f\" has successfully progressed.",
+            "reason": "NewReplicaSetAvailable",
+            "status": "True",
+            "type": "Progressing"
+          }
+        ],
+        "observedGeneration": 2,
+        "readyReplicas": 1,
+        "replicas": 1,
+        "terminatingReplicas": 0,
+        "updatedReplicas": 1
+      }
+    },
+    {
+      "apiVersion": "apps/v1",
+      "kind": "Deployment",
+      "metadata": {
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"name\":\"loadgen\",\"namespace\":\"network-aware\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"app\":\"loadgen\"}},\"template\":{\"metadata\":{\"annotations\":{\"linkerd.io/inject\":\"enabled\"},\"labels\":{\"app\":\"loadgen\"}},\"spec\":{\"affinity\":{\"nodeAffinity\":{\"requiredDuringSchedulingIgnoredDuringExecution\":{\"nodeSelectorTerms\":[{\"matchExpressions\":[{\"key\":\"network-aware/role\",\"operator\":\"In\",\"values\":[\"initial-app\"]}]}]}}},\"containers\":[{\"env\":[{\"name\":\"TARGET_URL\",\"value\":\"http://gateway:8000/request\"},{\"name\":\"INTERVAL_SEC\",\"value\":\"0.4\"}],\"image\":\"demo-loadgen:latest\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"loadgen\",\"resources\":{\"limits\":{\"cpu\":\"100m\",\"memory\":\"96Mi\"},\"requests\":{\"cpu\":\"20m\",\"memory\":\"32Mi\"}}}],\"tolerations\":[{\"effect\":\"NoSchedule\",\"key\":\"node-role.kubernetes.io/control-plane\",\"operator\":\"Exists\"},{\"effect\":\"NoSchedule\",\"key\":\"node-role.kubernetes.io/master\",\"operator\":\"Exists\"}]}}}}\n"
+        },
+        "creationTimestamp": "2026-04-17T19:54:32Z",
+        "generation": 1,
+        "name": "loadgen",
+        "namespace": "network-aware",
+        "resourceVersion": "120982",
+        "uid": "e319be3d-57ae-464d-a918-d64adb079a78"
+      },
+      "spec": {
+        "progressDeadlineSeconds": 600,
+        "replicas": 1,
+        "revisionHistoryLimit": 10,
+        "selector": {
+          "matchLabels": {
+            "app": "loadgen"
+          }
+        },
+        "strategy": {
+          "rollingUpdate": {
+            "maxSurge": "25%",
+            "maxUnavailable": "25%"
+          },
+          "type": "RollingUpdate"
+        },
+        "template": {
+          "metadata": {
+            "annotations": {
+              "linkerd.io/inject": "enabled"
+            },
+            "labels": {
+              "app": "loadgen"
+            }
+          },
+          "spec": {
+            "affinity": {
+              "nodeAffinity": {
+                "requiredDuringSchedulingIgnoredDuringExecution": {
+                  "nodeSelectorTerms": [
+                    {
+                      "matchExpressions": [
+                        {
+                          "key": "network-aware/role",
+                          "operator": "In",
+                          "values": [
+                            "initial-app"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            },
+            "containers": [
+              {
+                "env": [
+                  {
+                    "name": "TARGET_URL",
+                    "value": "http://gateway:8000/request"
+                  },
+                  {
+                    "name": "INTERVAL_SEC",
+                    "value": "0.4"
+                  }
+                ],
+                "image": "demo-loadgen:latest",
+                "imagePullPolicy": "IfNotPresent",
+                "name": "loadgen",
+                "resources": {
+                  "limits": {
+                    "cpu": "100m",
+                    "memory": "96Mi"
+                  },
+                  "requests": {
+                    "cpu": "20m",
+                    "memory": "32Mi"
+                  }
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File"
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "Always",
+            "schedulerName": "default-scheduler",
+            "securityContext": {},
+            "terminationGracePeriodSeconds": 30,
+            "tolerations": [
+              {
+                "effect": "NoSchedule",
+                "key": "node-role.kubernetes.io/control-plane",
+                "operator": "Exists"
+              },
+              {
+                "effect": "NoSchedule",
+                "key": "node-role.kubernetes.io/master",
+                "operator": "Exists"
+              }
+            ]
+          }
+        }
+      },
+      "status": {
+        "availableReplicas": 1,
+        "conditions": [
+          {
+            "lastTransitionTime": "2026-04-17T19:54:43Z",
+            "lastUpdateTime": "2026-04-17T19:54:43Z",
+            "message": "Deployment has minimum availability.",
+            "reason": "MinimumReplicasAvailable",
+            "status": "True",
+            "type": "Available"
+          },
+          {
+            "lastTransitionTime": "2026-04-17T19:54:32Z",
+            "lastUpdateTime": "2026-04-17T19:54:43Z",
+            "message": "ReplicaSet \"loadgen-d6bfd4fb4\" has successfully progressed.",
+            "reason": "NewReplicaSetAvailable",
+            "status": "True",
+            "type": "Progressing"
+          }
+        ],
+        "observedGeneration": 1,
+        "readyReplicas": 1,
+        "replicas": 1,
+        "terminatingReplicas": 0,
+        "updatedReplicas": 1
+      }
+    },
+    {
+      "apiVersion": "apps/v1",
+      "kind": "Deployment",
+      "metadata": {
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{\"network-aware/movable\":\"true\"},\"name\":\"logger-service\",\"namespace\":\"network-aware\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"app\":\"logger-service\"}},\"strategy\":{\"rollingUpdate\":{\"maxSurge\":1,\"maxUnavailable\":0},\"type\":\"RollingUpdate\"},\"template\":{\"metadata\":{\"annotations\":{\"linkerd.io/inject\":\"enabled\"},\"labels\":{\"app\":\"logger-service\"}},\"spec\":{\"affinity\":{\"nodeAffinity\":{\"requiredDuringSchedulingIgnoredDuringExecution\":{\"nodeSelectorTerms\":[{\"matchExpressions\":[{\"key\":\"network-aware/role\",\"operator\":\"In\",\"values\":[\"initial-app\"]}]}]}}},\"containers\":[{\"env\":[{\"name\":\"SERVICE_NAME\",\"value\":\"logger-service\"},{\"name\":\"PROCESSING_DELAY_MS\",\"value\":\"5\"}],\"image\":\"demo-service:latest\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"service\",\"ports\":[{\"containerPort\":8000}],\"readinessProbe\":{\"httpGet\":{\"path\":\"/readyz\",\"port\":8000}},\"resources\":{\"limits\":{\"cpu\":\"100m\",\"memory\":\"96Mi\"},\"requests\":{\"cpu\":\"20m\",\"memory\":\"32Mi\"}}}],\"tolerations\":[{\"effect\":\"NoSchedule\",\"key\":\"node-role.kubernetes.io/control-plane\",\"operator\":\"Exists\"},{\"effect\":\"NoSchedule\",\"key\":\"node-role.kubernetes.io/master\",\"operator\":\"Exists\"}]}}}}\n",
+          "network-aware/movable": "true"
+        },
+        "creationTimestamp": "2026-04-17T19:54:32Z",
+        "generation": 1,
+        "name": "logger-service",
+        "namespace": "network-aware",
+        "resourceVersion": "121056",
+        "uid": "914b6145-89fe-4708-bef7-03e9a145e2f8"
+      },
+      "spec": {
+        "progressDeadlineSeconds": 600,
+        "replicas": 1,
+        "revisionHistoryLimit": 10,
+        "selector": {
+          "matchLabels": {
+            "app": "logger-service"
+          }
+        },
+        "strategy": {
+          "rollingUpdate": {
+            "maxSurge": 1,
+            "maxUnavailable": 0
+          },
+          "type": "RollingUpdate"
+        },
+        "template": {
+          "metadata": {
+            "annotations": {
+              "linkerd.io/inject": "enabled"
+            },
+            "labels": {
+              "app": "logger-service"
+            }
+          },
+          "spec": {
+            "affinity": {
+              "nodeAffinity": {
+                "requiredDuringSchedulingIgnoredDuringExecution": {
+                  "nodeSelectorTerms": [
+                    {
+                      "matchExpressions": [
+                        {
+                          "key": "network-aware/role",
+                          "operator": "In",
+                          "values": [
+                            "initial-app"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            },
+            "containers": [
+              {
+                "env": [
+                  {
+                    "name": "SERVICE_NAME",
+                    "value": "logger-service"
+                  },
+                  {
+                    "name": "PROCESSING_DELAY_MS",
+                    "value": "5"
+                  }
+                ],
+                "image": "demo-service:latest",
+                "imagePullPolicy": "IfNotPresent",
+                "name": "service",
+                "ports": [
+                  {
+                    "containerPort": 8000,
+                    "protocol": "TCP"
+                  }
+                ],
+                "readinessProbe": {
+                  "failureThreshold": 3,
+                  "httpGet": {
+                    "path": "/readyz",
+                    "port": 8000,
+                    "scheme": "HTTP"
+                  },
+                  "periodSeconds": 10,
+                  "successThreshold": 1,
+                  "timeoutSeconds": 1
+                },
+                "resources": {
+                  "limits": {
+                    "cpu": "100m",
+                    "memory": "96Mi"
+                  },
+                  "requests": {
+                    "cpu": "20m",
+                    "memory": "32Mi"
+                  }
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File"
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "Always",
+            "schedulerName": "default-scheduler",
+            "securityContext": {},
+            "terminationGracePeriodSeconds": 30,
+            "tolerations": [
+              {
+                "effect": "NoSchedule",
+                "key": "node-role.kubernetes.io/control-plane",
+                "operator": "Exists"
+              },
+              {
+                "effect": "NoSchedule",
+                "key": "node-role.kubernetes.io/master",
+                "operator": "Exists"
+              }
+            ]
+          }
+        }
+      },
+      "status": {
+        "availableReplicas": 1,
+        "conditions": [
+          {
+            "lastTransitionTime": "2026-04-17T19:55:05Z",
+            "lastUpdateTime": "2026-04-17T19:55:05Z",
+            "message": "Deployment has minimum availability.",
+            "reason": "MinimumReplicasAvailable",
+            "status": "True",
+            "type": "Available"
+          },
+          {
+            "lastTransitionTime": "2026-04-17T19:54:32Z",
+            "lastUpdateTime": "2026-04-17T19:55:05Z",
+            "message": "ReplicaSet \"logger-service-6fd8bcc784\" has successfully progressed.",
+            "reason": "NewReplicaSetAvailable",
+            "status": "True",
+            "type": "Progressing"
+          }
+        ],
+        "observedGeneration": 1,
+        "readyReplicas": 1,
+        "replicas": 1,
+        "terminatingReplicas": 0,
+        "updatedReplicas": 1
+      }
+    },
+    {
+      "apiVersion": "apps/v1",
+      "kind": "Deployment",
+      "metadata": {
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"name\":\"network-rescheduler\",\"namespace\":\"network-aware\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"app\":\"network-rescheduler\"}},\"template\":{\"metadata\":{\"annotations\":{\"linkerd.io/inject\":\"enabled\"},\"labels\":{\"app\":\"network-rescheduler\"}},\"spec\":{\"affinity\":{\"nodeAffinity\":{\"preferredDuringSchedulingIgnoredDuringExecution\":[{\"preference\":{\"matchExpressions\":[{\"key\":\"node-role.kubernetes.io/control-plane\",\"operator\":\"Exists\"}]},\"weight\":100}]}},\"containers\":[{\"env\":[{\"name\":\"NAMESPACE\",\"value\":\"network-aware\"},{\"name\":\"PROMETHEUS_URL\",\"value\":\"http://prometheus.linkerd-viz.svc.cluster.local:9090\"},{\"name\":\"QUERY_WINDOW\",\"value\":\"2m\"},{\"name\":\"SYNC_INTERVAL_SEC\",\"value\":\"30\"},{\"name\":\"MIN_RPS\",\"value\":\"0.5\"},{\"name\":\"MIN_BENEFIT\",\"value\":\"10\"},{\"name\":\"COOLDOWN_SEC\",\"value\":\"60\"},{\"name\":\"DEFAULT_LATENCY_MS\",\"value\":\"50\"},{\"name\":\"HEALTH_PORT\",\"value\":\"8081\"}],\"image\":\"network-rescheduler:latest\",\"imagePullPolicy\":\"IfNotPresent\",\"livenessProbe\":{\"httpGet\":{\"path\":\"/healthz\",\"port\":\"health\"},\"initialDelaySeconds\":10,\"periodSeconds\":20},\"name\":\"controller\",\"ports\":[{\"containerPort\":8081,\"name\":\"health\"}],\"readinessProbe\":{\"httpGet\":{\"path\":\"/readyz\",\"port\":\"health\"},\"initialDelaySeconds\":5,\"periodSeconds\":10},\"resources\":{\"limits\":{\"cpu\":\"200m\",\"memory\":\"192Mi\"},\"requests\":{\"cpu\":\"50m\",\"memory\":\"96Mi\"}}}],\"serviceAccountName\":\"network-rescheduler\",\"tolerations\":[{\"effect\":\"NoSchedule\",\"key\":\"node-role.kubernetes.io/control-plane\",\"operator\":\"Exists\"},{\"effect\":\"NoSchedule\",\"key\":\"node-role.kubernetes.io/master\",\"operator\":\"Exists\"}]}}}}\n"
+        },
+        "creationTimestamp": "2026-04-17T20:00:10Z",
+        "generation": 1,
+        "name": "network-rescheduler",
+        "namespace": "network-aware",
+        "resourceVersion": "121852",
+        "uid": "e690cd42-3c12-45d2-834f-d0cbc4958bbf"
+      },
+      "spec": {
+        "progressDeadlineSeconds": 600,
+        "replicas": 1,
+        "revisionHistoryLimit": 10,
+        "selector": {
+          "matchLabels": {
+            "app": "network-rescheduler"
+          }
+        },
+        "strategy": {
+          "rollingUpdate": {
+            "maxSurge": "25%",
+            "maxUnavailable": "25%"
+          },
+          "type": "RollingUpdate"
+        },
+        "template": {
+          "metadata": {
+            "annotations": {
+              "linkerd.io/inject": "enabled"
+            },
+            "labels": {
+              "app": "network-rescheduler"
+            }
+          },
+          "spec": {
+            "affinity": {
+              "nodeAffinity": {
+                "preferredDuringSchedulingIgnoredDuringExecution": [
+                  {
+                    "preference": {
+                      "matchExpressions": [
+                        {
+                          "key": "node-role.kubernetes.io/control-plane",
+                          "operator": "Exists"
+                        }
+                      ]
+                    },
+                    "weight": 100
+                  }
+                ]
+              }
+            },
+            "containers": [
+              {
+                "env": [
+                  {
+                    "name": "NAMESPACE",
+                    "value": "network-aware"
+                  },
+                  {
+                    "name": "PROMETHEUS_URL",
+                    "value": "http://prometheus.linkerd-viz.svc.cluster.local:9090"
+                  },
+                  {
+                    "name": "QUERY_WINDOW",
+                    "value": "2m"
+                  },
+                  {
+                    "name": "SYNC_INTERVAL_SEC",
+                    "value": "30"
+                  },
+                  {
+                    "name": "MIN_RPS",
+                    "value": "0.5"
+                  },
+                  {
+                    "name": "MIN_BENEFIT",
+                    "value": "10"
+                  },
+                  {
+                    "name": "COOLDOWN_SEC",
+                    "value": "60"
+                  },
+                  {
+                    "name": "DEFAULT_LATENCY_MS",
+                    "value": "50"
+                  },
+                  {
+                    "name": "HEALTH_PORT",
+                    "value": "8081"
+                  }
+                ],
+                "image": "network-rescheduler:latest",
+                "imagePullPolicy": "IfNotPresent",
+                "livenessProbe": {
+                  "failureThreshold": 3,
+                  "httpGet": {
+                    "path": "/healthz",
+                    "port": "health",
+                    "scheme": "HTTP"
+                  },
+                  "initialDelaySeconds": 10,
+                  "periodSeconds": 20,
+                  "successThreshold": 1,
+                  "timeoutSeconds": 1
+                },
+                "name": "controller",
+                "ports": [
+                  {
+                    "containerPort": 8081,
+                    "name": "health",
+                    "protocol": "TCP"
+                  }
+                ],
+                "readinessProbe": {
+                  "failureThreshold": 3,
+                  "httpGet": {
+                    "path": "/readyz",
+                    "port": "health",
+                    "scheme": "HTTP"
+                  },
+                  "initialDelaySeconds": 5,
+                  "periodSeconds": 10,
+                  "successThreshold": 1,
+                  "timeoutSeconds": 1
+                },
+                "resources": {
+                  "limits": {
+                    "cpu": "200m",
+                    "memory": "192Mi"
+                  },
+                  "requests": {
+                    "cpu": "50m",
+                    "memory": "96Mi"
+                  }
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File"
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "Always",
+            "schedulerName": "default-scheduler",
+            "securityContext": {},
+            "serviceAccount": "network-rescheduler",
+            "serviceAccountName": "network-rescheduler",
+            "terminationGracePeriodSeconds": 30,
+            "tolerations": [
+              {
+                "effect": "NoSchedule",
+                "key": "node-role.kubernetes.io/control-plane",
+                "operator": "Exists"
+              },
+              {
+                "effect": "NoSchedule",
+                "key": "node-role.kubernetes.io/master",
+                "operator": "Exists"
+              }
+            ]
+          }
+        }
+      },
+      "status": {
+        "availableReplicas": 1,
+        "conditions": [
+          {
+            "lastTransitionTime": "2026-04-17T20:00:43Z",
+            "lastUpdateTime": "2026-04-17T20:00:43Z",
+            "message": "Deployment has minimum availability.",
+            "reason": "MinimumReplicasAvailable",
+            "status": "True",
+            "type": "Available"
+          },
+          {
+            "lastTransitionTime": "2026-04-17T20:00:10Z",
+            "lastUpdateTime": "2026-04-17T20:00:43Z",
+            "message": "ReplicaSet \"network-rescheduler-5b6d7ff6bc\" has successfully progressed.",
+            "reason": "NewReplicaSetAvailable",
+            "status": "True",
+            "type": "Progressing"
+          }
+        ],
+        "observedGeneration": 1,
+        "readyReplicas": 1,
+        "replicas": 1,
+        "terminatingReplicas": 0,
+        "updatedReplicas": 1
+      }
+    },
+    {
+      "apiVersion": "apps/v1",
+      "kind": "Deployment",
+      "metadata": {
+        "annotations": {
+          "deployment.kubernetes.io/revision": "2",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{\"network-aware/movable\":\"true\"},\"name\":\"user-service\",\"namespace\":\"network-aware\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"app\":\"user-service\"}},\"strategy\":{\"rollingUpdate\":{\"maxSurge\":1,\"maxUnavailable\":0},\"type\":\"RollingUpdate\"},\"template\":{\"metadata\":{\"annotations\":{\"linkerd.io/inject\":\"enabled\"},\"labels\":{\"app\":\"user-service\"}},\"spec\":{\"affinity\":{\"nodeAffinity\":{\"requiredDuringSchedulingIgnoredDuringExecution\":{\"nodeSelectorTerms\":[{\"matchExpressions\":[{\"key\":\"network-aware/role\",\"operator\":\"In\",\"values\":[\"initial-app\"]}]}]}}},\"containers\":[{\"env\":[{\"name\":\"SERVICE_NAME\",\"value\":\"user-service\"},{\"name\":\"UPSTREAMS\",\"value\":\"db-service=http://db-service:8000/db\"},{\"name\":\"PROCESSING_DELAY_MS\",\"value\":\"25\"}],\"image\":\"demo-service:latest\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"service\",\"ports\":[{\"containerPort\":8000}],\"readinessProbe\":{\"httpGet\":{\"path\":\"/readyz\",\"port\":8000}},\"resources\":{\"limits\":{\"cpu\":\"150m\",\"memory\":\"128Mi\"},\"requests\":{\"cpu\":\"40m\",\"memory\":\"48Mi\"}}}],\"tolerations\":[{\"effect\":\"NoSchedule\",\"key\":\"node-role.kubernetes.io/control-plane\",\"operator\":\"Exists\"},{\"effect\":\"NoSchedule\",\"key\":\"node-role.kubernetes.io/master\",\"operator\":\"Exists\"}]}}}}\n",
+          "network-aware/last-move-at": "2026-04-17T20:01:35.214722+00:00",
+          "network-aware/movable": "true",
+          "network-aware/target-node": "anshul-hp-pavilion-gaming-laptop-15-dk0xxx"
+        },
+        "creationTimestamp": "2026-04-17T19:54:32Z",
+        "generation": 2,
+        "name": "user-service",
+        "namespace": "network-aware",
+        "resourceVersion": "122238",
+        "uid": "53fad50c-d549-43fc-ae0a-c219a386d75f"
+      },
+      "spec": {
+        "progressDeadlineSeconds": 600,
+        "replicas": 1,
+        "revisionHistoryLimit": 10,
+        "selector": {
+          "matchLabels": {
+            "app": "user-service"
+          }
+        },
+        "strategy": {
+          "rollingUpdate": {
+            "maxSurge": 1,
+            "maxUnavailable": 0
+          },
+          "type": "RollingUpdate"
+        },
+        "template": {
+          "metadata": {
+            "annotations": {
+              "linkerd.io/inject": "enabled",
+              "network-aware/rollout-at": "2026-04-17T20:01:35.214722+00:00"
+            },
+            "labels": {
+              "app": "user-service"
+            }
+          },
+          "spec": {
+            "affinity": {
+              "nodeAffinity": {
+                "requiredDuringSchedulingIgnoredDuringExecution": {
+                  "nodeSelectorTerms": [
+                    {
+                      "matchExpressions": [
+                        {
+                          "key": "kubernetes.io/hostname",
+                          "operator": "In",
+                          "values": [
+                            "anshul-hp-pavilion-gaming-laptop-15-dk0xxx"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            },
+            "containers": [
+              {
+                "env": [
+                  {
+                    "name": "SERVICE_NAME",
+                    "value": "user-service"
+                  },
+                  {
+                    "name": "UPSTREAMS",
+                    "value": "db-service=http://db-service:8000/db"
+                  },
+                  {
+                    "name": "PROCESSING_DELAY_MS",
+                    "value": "25"
+                  }
+                ],
+                "image": "demo-service:latest",
+                "imagePullPolicy": "IfNotPresent",
+                "name": "service",
+                "ports": [
+                  {
+                    "containerPort": 8000,
+                    "protocol": "TCP"
+                  }
+                ],
+                "readinessProbe": {
+                  "failureThreshold": 3,
+                  "httpGet": {
+                    "path": "/readyz",
+                    "port": 8000,
+                    "scheme": "HTTP"
+                  },
+                  "periodSeconds": 10,
+                  "successThreshold": 1,
+                  "timeoutSeconds": 1
+                },
+                "resources": {
+                  "limits": {
+                    "cpu": "150m",
+                    "memory": "128Mi"
+                  },
+                  "requests": {
+                    "cpu": "40m",
+                    "memory": "48Mi"
+                  }
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File"
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "Always",
+            "schedulerName": "default-scheduler",
+            "securityContext": {},
+            "terminationGracePeriodSeconds": 30,
+            "tolerations": [
+              {
+                "effect": "NoSchedule",
+                "key": "node-role.kubernetes.io/control-plane",
+                "operator": "Exists"
+              },
+              {
+                "effect": "NoSchedule",
+                "key": "node-role.kubernetes.io/master",
+                "operator": "Exists"
+              }
+            ]
+          }
+        }
+      },
+      "status": {
+        "availableReplicas": 1,
+        "conditions": [
+          {
+            "lastTransitionTime": "2026-04-17T19:54:55Z",
+            "lastUpdateTime": "2026-04-17T19:54:55Z",
+            "message": "Deployment has minimum availability.",
+            "reason": "MinimumReplicasAvailable",
+            "status": "True",
+            "type": "Available"
+          },
+          {
+            "lastTransitionTime": "2026-04-17T19:54:32Z",
+            "lastUpdateTime": "2026-04-17T20:01:50Z",
+            "message": "ReplicaSet \"user-service-59c464854b\" has successfully progressed.",
+            "reason": "NewReplicaSetAvailable",
+            "status": "True",
+            "type": "Progressing"
+          }
+        ],
+        "observedGeneration": 2,
+        "readyReplicas": 1,
+        "replicas": 1,
+        "terminatingReplicas": 0,
+        "updatedReplicas": 1
+      }
+    }
+  ],
+  "kind": "List",
+  "metadata": {
+    "resourceVersion": ""
+  }
+}

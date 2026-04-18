@@ -33,7 +33,7 @@ trap cleanup EXIT
 
 sleep 3
 
-python3 "${PROJECT_DIR}/scripts/collect_results.py" \
+python3 "${PROJECT_DIR}/scripts/19_collect_results.py" \
   --namespace "${EXPERIMENT_NAMESPACE}" \
   --prometheus-url "http://127.0.0.1:${PROM_LOCAL_PORT}" \
   --interval "${INTERVAL_SEC}" \

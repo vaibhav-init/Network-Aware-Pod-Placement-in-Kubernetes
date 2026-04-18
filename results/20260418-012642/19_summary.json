@@ -1,0 +1,93 @@
+{
+  "started_at": "2026-04-17T19:56:42.445096+00:00",
+  "finished_at": "2026-04-17T20:03:43.819595+00:00",
+  "samples": 28,
+  "move_count": 3,
+  "moves": [
+    {
+      "timestamp": "2026-04-18T01:30:33.446391665+05:30",
+      "src": "auth-service",
+      "dst": "db-service",
+      "node": "anshul-hp-pavilion-gaming-laptop-15-dk0xxx"
+    },
+    {
+      "timestamp": "2026-04-18T01:31:04.237146269+05:30",
+      "src": "gateway",
+      "dst": "auth-service",
+      "node": "anshul-hp-pavilion-gaming-laptop-15-dk0xxx"
+    },
+    {
+      "timestamp": "2026-04-18T01:31:35.214794848+05:30",
+      "src": "user-service",
+      "dst": "db-service",
+      "node": "anshul-hp-pavilion-gaming-laptop-15-dk0xxx"
+    }
+  ],
+  "comparison_available": true,
+  "loadgen": {
+    "total_requests": 531,
+    "success_rate_percent": 97.93,
+    "before": {
+      "avg_latency_ms": 685.18,
+      "p95_latency_ms": 836.16
+    },
+    "after": {
+      "avg_latency_ms": 447.3,
+      "p95_latency_ms": 735.58
+    }
+  },
+  "comparison_anchor": {
+    "timestamp": "2026-04-18T01:30:33.446391665+05:30",
+    "src": "auth-service",
+    "dst": "db-service",
+    "node": "anshul-hp-pavilion-gaming-laptop-15-dk0xxx"
+  },
+  "comparison_note": "Before/after windows are split at the first controller move event.",
+  "edge_comparison": [
+    {
+      "edge": "loadgen->gateway",
+      "before_p95_ms": 973.158,
+      "after_p95_ms": 621.875,
+      "before_rps": 0.927273,
+      "after_rps": 1.281818,
+      "before_benefit": 902.383,
+      "after_benefit": 797.131
+    },
+    {
+      "edge": "gateway->user-service",
+      "before_p95_ms": 297.755,
+      "after_p95_ms": 220.931,
+      "before_rps": 0.927273,
+      "after_rps": 1.225993,
+      "before_benefit": 276.1,
+      "after_benefit": 270.859
+    },
+    {
+      "edge": "gateway->logger-service",
+      "before_p95_ms": 11.5,
+      "after_p95_ms": 163.529,
+      "before_rps": 0.927273,
+      "after_rps": 1.309091,
+      "before_benefit": 10.664,
+      "after_benefit": 214.075
+    },
+    {
+      "edge": "gateway->auth-service",
+      "before_p95_ms": 297.653,
+      "after_p95_ms": 48.045,
+      "before_rps": 0.936364,
+      "after_rps": 1.3,
+      "before_benefit": 278.712,
+      "after_benefit": 62.459
+    },
+    {
+      "edge": "auth-service->db-service",
+      "before_p95_ms": 215.0,
+      "after_p95_ms": 19.5,
+      "before_rps": 0.927273,
+      "after_rps": 1.290909,
+      "before_benefit": 199.364,
+      "after_benefit": 25.173
+    }
+  ]
+}

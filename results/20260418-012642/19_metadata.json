@@ -1,0 +1,8 @@
+{
+  "namespace": "network-aware",
+  "prometheus_url": "http://127.0.0.1:19090",
+  "started_at": "2026-04-17T19:56:42.445096+00:00",
+  "poll_interval_sec": 15,
+  "finished_at": "2026-04-17T20:03:43.819595+00:00",
+  "samples": 28
+}
