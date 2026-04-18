@@ -14,4 +14,4 @@ plt.title("Pod Placement vs Latency")
 plt.xticks(rotation=0)   
 plt.tight_layout()       
 
-plt.savefig("19_latency_plot.png")
+plt.savefig("G_19_latency_plot.png")

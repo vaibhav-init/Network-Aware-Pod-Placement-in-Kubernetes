@@ -17,35 +17,35 @@ and measured latency using curl response time.
 Results show that **pods on the same node have slightly lower latency** compared to pods on different nodes.
 
 Files:
-- `19_kind-config.yaml` – cluster configuration
-- `19_server-pod.yaml` – server pod
-- `19_server-service.yaml` – service for server
-- `19_client-pod.yaml` – client pod
-- `19_results.csv` – latency measurements
-- `19_plot_latency.py` – plotting script
-- `19_latency_plot.png` – generated latency plot
-- `19_report.pdf` – project report
+- `G_19_kind-config.yaml` – cluster configuration
+- `G_19_server-pod.yaml` – server pod
+- `G_19_server-service.yaml` – service for server
+- `G_19_client-pod.yaml` – client pod
+- `G_19_results.csv` – latency measurements
+- `G_19_plot_latency.py` – plotting script
+- `G_19_latency_plot.png` – generated latency plot
+- `G_19_report.pdf` – project report
 
 Commands to Run:
 
 1. Create Kubernetes Cluster using Kind:
 ```bash
-kind create cluster --name net-scheduler --config 19_kind-config.yaml
+kind create cluster --name net-scheduler --config G_19_kind-config.yaml
 ```
 
 2. Deploy Server Pod:
 ```bash
-kubectl apply -f 19_server-pod.yaml
+kubectl apply -f G_19_server-pod.yaml
 ```
 
 3. Create Service for Server:
 ```bash
-kubectl apply -f 19_server-service.yaml
+kubectl apply -f G_19_server-service.yaml
 ```
 
 4. Deploy Client Pod:
 ```bash
-kubectl apply -f 19_client-pod.yaml
+kubectl apply -f G_19_client-pod.yaml
 ```
 
 5. Verify Pods by checking running:
@@ -60,6 +60,6 @@ kubectl exec client -- curl -w "%{time_total}\n" -o /dev/null -s server-service:
 
 7. Generate latency Plot:
 ```bash
-python 19_plot_latency.py
+python G_19_plot_latency.py
 ```
 This outputs the latency comparison graph plot.

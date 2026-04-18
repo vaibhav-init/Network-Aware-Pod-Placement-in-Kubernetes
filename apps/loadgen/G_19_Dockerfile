@@ -1,0 +1,8 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+COPY G_19_loadgen.py /app/G_19_loadgen.py
+
+ENV PYTHONUNBUFFERED=1
+
+CMD ["python", "/app/G_19_loadgen.py"]

@@ -68,16 +68,16 @@ That creates a deterministic bad initial placement:
 ## Build
 
 ```bash
-WORKER_NODES="user@worker-a user@worker-b" ./scripts/19_build-images.sh
+WORKER_NODES="user@worker-a user@worker-b" ./scripts/G_19_build-images.sh
 
 # If Docker build networking is restricted on your machine:
-DOCKER_BUILD_FLAGS="--network=host" WORKER_NODES="user@worker-a user@worker-b" ./scripts/19_build-images.sh
+DOCKER_BUILD_FLAGS="--network=host" WORKER_NODES="user@worker-a user@worker-b" ./scripts/G_19_build-images.sh
 ```
 
 ## Deploy
 
 ```bash
-./scripts/19_deploy.sh
+./scripts/G_19_deploy.sh
 ```
 
 ## Observe
@@ -93,7 +93,7 @@ kubectl -n network-aware rollout status deploy/auth-service
 Run the experiment collector after deployment:
 
 ```bash
-./scripts/19_run-experiment.sh
+./scripts/G_19_run-experiment.sh
 ```
 
 What it does:
@@ -106,28 +106,28 @@ What it does:
 If you also want the controller to stop automatically when the collection session ends:
 
 ```bash
-STOP_CONTROLLER_ON_EXIT=true ./scripts/19_run-experiment.sh
+STOP_CONTROLLER_ON_EXIT=true ./scripts/G_19_run-experiment.sh
 ```
 
 You can also stop it manually later:
 
 ```bash
-./scripts/19_stop-controller.sh
+./scripts/G_19_stop-controller.sh
 ```
 
 Generated outputs include:
 
-- `19_placements.csv`
-- `19_service_edges.csv`
-- `19_deployments.csv`
-- `19_loadgen_metrics.csv`
-- `19_move_events.csv`
-- `19_summary.json`
-- `plots/19_edge_p95_comparison.svg`
-- `plots/19_loadgen_latency.svg`
+- `G_19_placements.csv`
+- `G_19_service_edges.csv`
+- `G_19_deployments.csv`
+- `G_19_loadgen_metrics.csv`
+- `G_19_move_events.csv`
+- `G_19_summary.json`
+- `plots/G_19_edge_p95_comparison.svg`
+- `plots/G_19_loadgen_latency.svg`
 
 ## Tear Down
 
 ```bash
-./scripts/19_teardown.sh
+./scripts/G_19_teardown.sh
 ```

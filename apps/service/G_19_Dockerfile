@@ -1,9 +1,9 @@
 FROM python:3.11-slim
 
 WORKDIR /app
-COPY 19_app.py /app/19_app.py
+COPY G_19_app.py /app/G_19_app.py
 
 ENV PYTHONUNBUFFERED=1
 EXPOSE 8000
 
-CMD ["python", "/app/19_app.py"]
+CMD ["python", "/app/G_19_app.py"]

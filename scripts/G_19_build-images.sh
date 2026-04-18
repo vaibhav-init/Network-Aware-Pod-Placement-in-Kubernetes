@@ -22,7 +22,7 @@ for entry in "${IMAGES[@]}"; do
   IFS=':' read -r image path <<< "$entry"
   echo ""
   echo "Building ${image}:latest"
-  build_cmd=(docker build -f "$PROJECT_DIR/$path/19_Dockerfile" -t "${image}:latest")
+  build_cmd=(docker build -f "$PROJECT_DIR/$path/G_G_G_19_Dockerfile" -t "${image}:latest")
   if [ -n "$DOCKER_BUILD_FLAGS" ]; then
     # shellcheck disable=SC2206
     extra_build_flags=($DOCKER_BUILD_FLAGS)
@@ -41,4 +41,4 @@ for entry in "${IMAGES[@]}"; do
 done
 
 echo ""
-echo "Images are ready. Next: ./scripts/19_deploy.sh"
+echo "Images are ready. Next: ./scripts/G_19_deploy.sh"

@@ -104,9 +104,9 @@ class ExperimentCollector:
         self.edge_samples: Dict[str, List[dict]] = defaultdict(list)
         self.placement_samples: List[dict] = []
 
-        self.placements_csv = self.session_dir / "19_placements.csv"
-        self.edges_csv = self.session_dir / "19_service_edges.csv"
-        self.deployments_csv = self.session_dir / "19_deployments.csv"
+        self.placements_csv = self.session_dir / "G_19_placements.csv"
+        self.edges_csv = self.session_dir / "G_19_service_edges.csv"
+        self.deployments_csv = self.session_dir / "G_19_deployments.csv"
         self.write_csv_headers()
         self.write_metadata()
 
@@ -136,7 +136,7 @@ class ExperimentCollector:
             )
 
     def write_metadata(self):
-        with (self.session_dir / "19_metadata.json").open("w") as handle:
+        with (self.session_dir / "G_19_metadata.json").open("w") as handle:
             json.dump(self.metadata, handle, indent=2)
 
     def sample(self):
@@ -285,25 +285,25 @@ class ExperimentCollector:
         except Exception:
             deployments_json = {"items": []}
 
-        (self.session_dir / "19_pods-final.json").write_text(json.dumps(pods_json, indent=2))
-        (self.session_dir / "19_deployments-final.json").write_text(
+        (self.session_dir / "G_19_pods-final.json").write_text(json.dumps(pods_json, indent=2))
+        (self.session_dir / "G_19_deployments-final.json").write_text(
             json.dumps(deployments_json, indent=2)
         )
-        (self.session_dir / "19_controller.log").write_text(
+        (self.session_dir / "G_19_controller.log").write_text(
             kubectl_logs(self.args.namespace, "deploy/network-rescheduler", "controller")
         )
-        (self.session_dir / "19_loadgen.log").write_text(
+        (self.session_dir / "G_19_loadgen.log").write_text(
             kubectl_logs(self.args.namespace, "deploy/loadgen", "loadgen")
         )
-        (self.session_dir / "19_events.txt").write_text(kubectl_events(self.args.namespace))
+        (self.session_dir / "G_19_events.txt").write_text(kubectl_events(self.args.namespace))
 
-        loadgen_samples = self.parse_loadgen_log(self.session_dir / "19_loadgen.log")
-        move_events = self.parse_controller_log(self.session_dir / "19_controller.log")
+        loadgen_samples = self.parse_loadgen_log(self.session_dir / "G_19_loadgen.log")
+        move_events = self.parse_controller_log(self.session_dir / "G_19_controller.log")
         self.write_loadgen_csv(loadgen_samples)
         self.write_move_csv(move_events)
 
         summary = self.build_summary(loadgen_samples, move_events)
-        with (self.session_dir / "19_summary.json").open("w") as handle:
+        with (self.session_dir / "G_19_summary.json").open("w") as handle:
             json.dump(summary, handle, indent=2)
 
         self.write_edge_comparison_svg(summary.get("edge_comparison", []))
@@ -347,14 +347,14 @@ class ExperimentCollector:
         return events
 
     def write_loadgen_csv(self, samples: List[dict]):
-        with (self.session_dir / "19_loadgen_metrics.csv").open("w", newline="") as handle:
+        with (self.session_dir / "G_19_loadgen_metrics.csv").open("w", newline="") as handle:
             writer = csv.writer(handle)
             writer.writerow(["timestamp", "status", "latency_ms"])
             for item in samples:
                 writer.writerow([item["timestamp"], item["status"], item["latency_ms"]])
 
     def write_move_csv(self, events: List[dict]):
-        with (self.session_dir / "19_move_events.csv").open("w", newline="") as handle:
+        with (self.session_dir / "G_19_move_events.csv").open("w", newline="") as handle:
             writer = csv.writer(handle)
             writer.writerow(["timestamp", "src", "dst", "node"])
             for item in events:
@@ -502,7 +502,7 @@ class ExperimentCollector:
                 "</svg>",
             ]
         )
-        (self.plots_dir / "19_edge_p95_comparison.svg").write_text("".join(parts))
+        (self.plots_dir / "G_19_edge_p95_comparison.svg").write_text("".join(parts))
 
     def write_loadgen_latency_svg(self, samples: List[dict], move_events: List[dict]):
         if not samples:
@@ -548,7 +548,7 @@ class ExperimentCollector:
             )
 
         parts.append("</svg>")
-        (self.plots_dir / "19_loadgen_latency.svg").write_text("".join(parts))
+        (self.plots_dir / "G_19_loadgen_latency.svg").write_text("".join(parts))
 
 
 def parse_args() -> argparse.Namespace:

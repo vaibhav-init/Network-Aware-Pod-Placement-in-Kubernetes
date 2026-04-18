@@ -1,10 +1,6 @@
-"""
-Plot load-generator end-to-end latency comparison (before vs after controller moves).
-Values are hardcoded from the experiment run on 2026-04-18.
-"""
 import matplotlib.pyplot as plt
 
-# Hardcoded values from results/20260418-012642/19_summary.json
+# Hardcoded values from results/20260418-012642/G_19_summary.json
 categories = ["Avg Latency", "P95 Latency"]
 before = [685.18, 836.16]
 after = [447.30, 735.58]
