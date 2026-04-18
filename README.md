@@ -1,5 +1,11 @@
 # Network-Aware Pod Re-Placement in Kubernetes
 
+Team:
+- Vaibhav Lakhera (MT25049)
+- Anshul Chittora (MT25062)
+- Vishal (MT25053)
+
+
 This project demonstrates a simple final-project architecture for runtime network-aware workload placement:
 
 - Kubernetes performs the initial placement with the default scheduler.
